@@ -1,0 +1,36 @@
+{
+  "name": "ts-ko-static",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:dev": "webpack --mode development",
+    "start:dev": "npm run build:dev",
+    "build": "webpack --mode production",
+    "start": "npm run build"
+  },
+  "dependencies": {
+    "knockout": "^3.5.1",
+    "page": "^1.11.6"
+  },
+  "devDependencies": {
+    "@types/knockout": "^3.4.77",
+    "@types/page": "^1.11.9",
+    "autoprefixer": "^10.4.20",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.0",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss-loader": "^8.1.1",
+    "sass-loader": "^16.0.3",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "private": true
+}

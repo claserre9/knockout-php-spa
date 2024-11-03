@@ -1,0 +1,29 @@
+{
+    "name": "claserre9/ts-ko-php",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Clifford Laserre",
+            "email": "claserre9@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "doctrine/orm": "^3",
+        "doctrine/dbal": "^4",
+        "symfony/cache": "^7",
+        "doctrine/common": "^3",
+        "slim/slim": "^4",
+        "php-di/php-di": "^7",
+        "slim/psr7": "^1.6",
+        "monolog/monolog": "^2.9",
+        "ext-redis": "*",
+        "symfony/dotenv": "^7.1",
+        "ext-fileinfo": "*"
+    }
+}
