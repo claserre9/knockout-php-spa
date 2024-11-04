@@ -4,11 +4,10 @@ const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // Ensure clean builds
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
 	const isProduction = argv.mode === 'production';
-
 	return {
 		entry: {
 			app: './src/index.ts',
@@ -16,7 +15,9 @@ module.exports = (env, argv) => {
 		},
 		mode: isProduction ? 'production' : 'development',
 		devtool: !isProduction ? 'cheap-module-source-map' : false,
-		cache: !isProduction,
+		cache: {
+			type: 'filesystem',
+		},
 		module: {
 			rules: [
 				{
@@ -24,7 +25,7 @@ module.exports = (env, argv) => {
 					use: {
 						loader: 'ts-loader',
 						options: {
-							configFile: !isProduction ? 'tsconfig.dev.json' : 'tsconfig.prod.json'
+							configFile: isProduction ? 'tsconfig.prod.json' : 'tsconfig.dev.json'
 						}
 					},
 					exclude: /node_modules/
@@ -33,7 +34,12 @@ module.exports = (env, argv) => {
 					test: /\.(scss|css)$/,
 					use: [
 						isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-						'css-loader',
+						{
+							loader: 'css-loader',
+							options: {
+								sourceMap: !isProduction,
+							},
+						},
 						{
 							loader: 'postcss-loader',
 							options: {
@@ -51,10 +57,10 @@ module.exports = (env, argv) => {
 			extensions: ['.ts', '.js'],
 		},
 		output: {
-			filename: isProduction ? '[name].[contenthash].bundle.js' : '[name].bundle.js',
+			filename: isProduction ? '[name].[contenthash].js' : '[name].js',
 			path: path.resolve(__dirname, 'public/dist'),
 			clean: true,
-			pathinfo: false
+			pathinfo: false,
 		},
 		optimization: {
 			minimize: isProduction,
@@ -111,6 +117,9 @@ module.exports = (env, argv) => {
 		],
 		stats: {
 			warnings: false,
+		},
+		performance: {
+			hints: isProduction ? 'warning' : false,
 		},
 	};
 };

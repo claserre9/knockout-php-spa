@@ -5,7 +5,7 @@ export default class HomeViewModel extends BaseViewModel{
         super();
 
         this.template = `
-<h1>Home</h1>
+<p>Home</p>
 <a href="/about">About</a>  
         `;
     }
