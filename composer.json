@@ -13,6 +13,11 @@
             "App\\": "src/"
         }
     },
+    "config": {
+        "platform": {
+            "php": "8.3"
+        }
+    },
     "require": {
         "doctrine/orm": "^3",
         "doctrine/dbal": "^4",
