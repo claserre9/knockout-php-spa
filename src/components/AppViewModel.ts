@@ -1,5 +1,5 @@
 import BaseViewModel from "./BaseViewModel";
-import { computed, observable } from "knockout";
+import {computed, observable} from "knockout";
 import "./../styles/styles.css"
 
 export default class AppViewModel extends BaseViewModel {
@@ -102,13 +102,13 @@ export default class AppViewModel extends BaseViewModel {
                     <hr>
                     <br>
                     <div>
-                        <label>Password:</label>
+                        <label style="display: block; margin-bottom: 5px">Password:</label>
                         <span data-bind="text: password"></span>
                         <button data-bind="click: copyPassword">Copy</button>
                     </div>
                     <br>
                     <div>
-                        <label>Password Strength:</label>
+                        <label style="display: block; margin-bottom: 5px">Password Strength:</label>
                         <span data-bind="text: passwordStrength().strengthLabel"></span>
                     </div>
                     <div>
