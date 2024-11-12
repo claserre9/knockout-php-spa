@@ -11,7 +11,6 @@ module.exports = (env, argv) => {
 	return {
 		entry: {
 			app: './src/index.ts',
-			style: './src/style.ts',
 		},
 		mode: isProduction ? 'production' : 'development',
 		devtool: !isProduction ? 'cheap-module-source-map' : false,

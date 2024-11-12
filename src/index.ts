@@ -1,7 +1,6 @@
 import page from "page";
-import HomeViewModel from "./components/HomeViewModel";
+import AppViewModel from "./components/AppViewModel";
 import NotFoundViewModel from "./components/NotFoundViewModel";
-import AboutViewModel from "./components/AboutViewModel";
 
 
 
@@ -12,11 +11,7 @@ page('*', function (ctx: any, next: Function) {
 
 
 page("/" ,function () {
-    new HomeViewModel().render();
-})
-
-page("/about" ,function () {
-    new AboutViewModel().render();
+    new AppViewModel().render();
 })
 
 
