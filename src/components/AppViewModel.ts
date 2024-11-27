@@ -133,6 +133,10 @@ export default class AppViewModel extends BaseViewModel {
         this.currentTab(tabName);
     }
 
+    /**
+     * Generates a password based on the current configuration.
+     * @returns {void}
+     */
     public generatePassword() {
         const symbols = this.symbols().split("");
         const numbers = this.numbers().split("");

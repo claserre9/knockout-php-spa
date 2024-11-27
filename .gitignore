@@ -18,3 +18,4 @@ yarn-error.log*
 /.fleet/
 /public/index.html
 /public/dist/
+.DS_Store

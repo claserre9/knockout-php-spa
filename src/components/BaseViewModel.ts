@@ -1,18 +1,17 @@
-import {applyBindings, cleanNode, dataFor} from 'knockout';
+import {applyBindings, cleanNode, dataFor} from "knockout";
 
 export default class BaseViewModel {
+    public template: string | undefined | null;
+    public context: any;
+    public selector: any;
 
-    public template: string | undefined | null
-    public context : any
-    public selector: any
-
-    render(selector: string = 'app'): this {
+    public render(selector: string = "app"): this {
         this.selector = selector;
         this.load(selector);
         return this;
     }
 
-    destroy(){
+    public destroy() {
         const element = document.getElementById(this.selector);
         if (element) {
             cleanNode(element);
@@ -24,12 +23,12 @@ export default class BaseViewModel {
         }
     }
 
-    setContext(context: any): this {
+    public setContext(context: any): this {
         this.context = context;
         return this;
     }
 
-    observableFrom(selector: string) {
+    public observableFrom(selector: string) {
         const element = document.getElementById(selector);
         if (!element) {
             return null;
@@ -46,6 +45,5 @@ export default class BaseViewModel {
         } else {
             console.error(`Element with id "${selector}" not found.`);
         }
-
     }
 }

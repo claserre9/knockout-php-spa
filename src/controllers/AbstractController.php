@@ -2,14 +2,13 @@
 namespace App\controllers;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Redis;
 
-/**
- * The AbstractController class is an abstract class that provides common functionality
- * for controllers in a PHP application.
- */
+
 abstract class AbstractController
 {
     protected const string JSON_CONTENT_TYPE = 'application/json';
@@ -74,5 +73,15 @@ abstract class AbstractController
         return $response
             ->withHeader('Content-Type', self::JSON_CONTENT_TYPE)
             ->withStatus($status);
+    }
+
+    public function container(string $name)
+    {
+        try {
+            return $this->container->get($name);
+        } catch (NotFoundExceptionInterface|ContainerExceptionInterface $e) {
+            error_log("Container error: {$e->getMessage()}");
+            return null;
+        }
     }
 }
