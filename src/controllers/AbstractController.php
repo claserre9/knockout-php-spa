@@ -9,6 +9,10 @@ use Psr\Http\Message\ResponseInterface;
 use Redis;
 
 
+/**
+ * AbstractController serves as a base controller providing common functionality
+ * such as access to a dependency injection container, entity manager, and Redis integration.
+ */
 abstract class AbstractController
 {
     protected const string JSON_CONTENT_TYPE = 'application/json';
@@ -17,21 +21,45 @@ abstract class AbstractController
     protected ?EntityManagerInterface $entityManager;
     protected ?Redis $redis;
 
+    /**
+     * Retrieves the current container.
+     *
+     * @return ContainerInterface|null The container instance if available, or null otherwise.
+     */
     public function getContainer(): ?ContainerInterface
     {
         return $this->container;
     }
 
+    /**
+     * Retrieves the current entity manager.
+     *
+     * @return EntityManagerInterface|null The entity manager instance if available, or null otherwise.
+     */
     public function getEntityManager(): ?EntityManagerInterface
     {
         return $this->entityManager;
     }
 
+    /**
+     * Retrieves the Redis instance associated with this object.
+     *
+     * @return Redis|null The Redis instance if available; null otherwise.
+     */
     public function getRedis(): ?Redis
     {
         return $this->redis;
     }
 
+    /**
+     * Constructor to initialize dependencies.
+     *
+     * @param ContainerInterface|null $container The container interface instance, or null if not provided.
+     * @param EntityManagerInterface|null $entityManager The entity manager instance, or null if not provided.
+     * @param Redis|null $redis The Redis instance, or null if not provided.
+     *
+     * @return void
+     */
     public function __construct(
         ?ContainerInterface $container,
         ?EntityManagerInterface $entityManager,

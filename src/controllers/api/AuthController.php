@@ -8,6 +8,10 @@ use Psr\Http\Message\ResponseInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
+/**
+ * AuthController is responsible for handling user authentication actions
+ * such as registration, login, and logout.
+ */
 class AuthController extends AbstractController
 {
 
@@ -17,9 +21,9 @@ class AuthController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return ResponseInterface
+     * @return ResponseInterface|null
      */
-    public function register(Request $request, Response $response, array $args)
+    public function register(Request $request, Response $response, array $args): ?ResponseInterface
     {
         
     }
@@ -30,17 +34,11 @@ class AuthController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return ResponseInterface
+     * @return ResponseInterface|null
      */
-    public function login(Request $request, Response $response, array $args): ResponseInterface
+    public function login(Request $request, Response $response, array $args): ?ResponseInterface
     {
-        /** @var LipsumRepository $lipsumRepository */
-        $lipsumRepository = $this->container(LipsumRepository::class);
 
-        $data = $lipsumRepository->getData();
-
-        $response->getBody()->write(json_encode(['message' => 'Login successful', 'data' => $data]));
-        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     }
 
     /**
@@ -49,9 +47,9 @@ class AuthController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return ResponseInterface
+     * @return ResponseInterface|null
      */
-    public function logout(Request $request, Response $response, array $args)
+    public function logout(Request $request, Response $response, array $args): ?ResponseInterface
     {
 
     }

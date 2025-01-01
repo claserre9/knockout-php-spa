@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "type": "module",
   "author": {
-    "email": "claserre9@gmail.com"
+    "email": "claserre9@gmail.com",
+    "name": "Clifford Laserre"
   },
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "webpack --mode development",
-    "start": "webpack --mode production"
+    "dev": "npm run lint && webpack --mode development",
+    "start": "npm run lint && webpack --mode production",
+    "lint": "eslint ./js "
   },
   "dependencies": {
     "knockout": "^3.5.1",
