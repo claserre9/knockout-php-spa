@@ -14,7 +14,7 @@ ini_set('display_startup_errors', 1);
 require_once __DIR__ . "/../config/env.php";
 require_once __DIR__ . "/../vendor/autoload.php";
 
-$isProduction = isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] == 'production';
+$isProduction = isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'production';
 
 try {
     $builder = new ContainerBuilder();

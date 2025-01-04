@@ -3,7 +3,6 @@
 namespace App\controllers\api;
 
 use App\controllers\AbstractController;
-use App\repositories\redis\LipsumRepository;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
